@@ -54,7 +54,9 @@ public class Main extends Application {
     public boolean userLogging(String userId, String password){
         if (Authenticator.validate(userId, password)) {
             loggedUser = User.of(userId);
-            gotoProfile();
+            
+            gotoScreen1();
+            //gotoProfile();
             return true;
         } else {
             return false;
@@ -100,4 +102,20 @@ public class Main extends Application {
         stage.sizeToScene();
         return (Initializable) loader.getController();
     }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    private void gotoScreen1() {
+  try {
+            Screen1Controller screen1 = (Screen1Controller) replaceSceneContent("Screen1.fxml");
+            screen1.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }    }
 }
