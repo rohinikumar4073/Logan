@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Logan.jar" size="34767" download="eager" />
+    <jar href="Logan.jar" size="34774" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Logan" >
     <param name="requiredFXVersion" value="8.0+"/>
