@@ -73,6 +73,7 @@ public class LoginController extends AnchorPane implements Initializable {
     }
     
     
+    @FXML
     public void processLogin(ActionEvent event) {
         if (application == null){
             // We are running in isolated FXML, possibly in Scene Builder.

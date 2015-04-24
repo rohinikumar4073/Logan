@@ -22,15 +22,23 @@ import demo.security.Authenticator;
 public class Main extends Application {
 
     private Stage stage;
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
     private User loggedUser;
-    private final double MINIMUM_WINDOW_WIDTH = 390.0;
+    private final double MINIMUM_WINDOW_WIDTH = 300.0;
     private final double MINIMUM_WINDOW_HEIGHT = 500.0;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Application.launch(Main.class, (java.lang.String[])null);
+        Application.launch(Main.class, (java.lang.String[]) null);
     }
 
     @Override
@@ -50,24 +58,33 @@ public class Main extends Application {
     public User getLoggedUser() {
         return loggedUser;
     }
-        
-    public boolean userLogging(String userId, String password){
+
+    public boolean userLogging(String userId, String password) {
         if (Authenticator.validate(userId, password)) {
             loggedUser = User.of(userId);
-            
             gotoScreen1();
+            // gotoChooseFile();
             //gotoProfile();
             return true;
         } else {
             return false;
         }
     }
-    
-    void userLogout(){
+
+    private void gotoScreen1() {
+        try {
+            Screen1Controller screen1 = (Screen1Controller) replaceSceneContent("Screen1.fxml");
+            screen1.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void userLogout() {
         loggedUser = null;
         gotoLogin();
     }
-    
+
     private void gotoProfile() {
         try {
             ProfileController profile = (ProfileController) replaceSceneContent("profile.fxml");
@@ -96,26 +113,20 @@ public class Main extends Application {
             page = (AnchorPane) loader.load(in);
         } finally {
             in.close();
-        } 
-        Scene scene = new Scene(page, 800, 600);
+        }
+        Scene scene = new Scene(page, 400, 600);
         stage.setScene(scene);
         stage.sizeToScene();
         return (Initializable) loader.getController();
     }
 
-    public Stage getStage() {
-        return stage;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    private void gotoScreen1() {
-  try {
-            Screen1Controller screen1 = (Screen1Controller) replaceSceneContent("Screen1.fxml");
-            screen1.setApp(this);
+    private void gotoChooseFile() {
+        try {
+            ChooseFileController profile = (ChooseFileController) replaceSceneContent("ChooseFile.fxml");
+            profile.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }    }
+        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

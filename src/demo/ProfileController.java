@@ -44,6 +44,7 @@ import javafx.util.Duration;
 import demo.model.User;
 import javafx.geometry.Insets;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 /**
  * Profile Controller.
@@ -74,6 +75,7 @@ public class ProfileController extends AnchorPane implements Initializable {
     @FXML
     private Button reset;
     
+    private Stage stage;
     public void setApp(Main application){
         this.application = application;
         User loggedUser = application.getLoggedUser();

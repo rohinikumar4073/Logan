@@ -8,6 +8,7 @@ package demo;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
  */
 public class Screen1Controller implements Initializable {
     private Stage stage;
+    private Main application;
 
     public Stage getStage() {
         return stage;
@@ -35,14 +37,32 @@ public class Screen1Controller implements Initializable {
         // TODO
     }    
 
-    void setApp(Main aThis) {
-        setStage(aThis.getStage());
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setApp(Main application) {
+        setApplication(application);
+        setStage(application.getStage());
     }
     
     public void openFile(ActionEvent event){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Logon - Open file to log");
         fileChooser.showOpenDialog(stage);
+    }  
+    public void processLogout(ActionEvent event) {
+        if (getApplication() == null){
+            // We are running in isolated FXML, possibly in Scene Builder.
+            // NO-OP.
+            return;
+        }
+        
+        getApplication().userLogout();
     }
+
+    public Main getApplication() {
+        return application;
+    }
+
+    public void setApplication(Main application) {
+        this.application = application;
+    }
+    
 }
