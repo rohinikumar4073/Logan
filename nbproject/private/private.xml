@@ -2,6 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Logan/src/demo/screen1.css</file>
+            <file>file:/D:/Logan/src/demo/security/Authenticator.java</file>
+            <file>file:/D:/Logan/src/demo/LoginController.java</file>
+            <file>file:/D:/Logan/src/demo/Main.java</file>
+            <file>file:/D:/Logan/src/demo/model/LogImportStats.java</file>
+            <file>file:/D:/Logan/src/demo/model/LogData.java</file>
+            <file>file:/D:/Logan/src/demo/model/User.java</file>
+            <file>file:/D:/Logan/src/demo/login.fxml</file>
+            <file>file:/D:/Logan/src/demo/logon.png</file>
+            <file>file:/D:/Logan/src/demo/model/ParsingContext.java</file>
+            <file>file:/D:/Logan/src/demo/utiliies/FileChooserSample.java</file>
+            <file>file:/D:/Logan/src/demo/Screen1.fxml</file>
+            <file>file:/D:/Logan/src/demo/utiliies/Filehandler.java</file>
+            <file>file:/D:/Logan/src/demo/utiliies/Properites.java</file>
+            <file>file:/D:/Logan/src/demo/Screen1Controller.java</file>
+        </group>
     </open-files>
 </project-private>

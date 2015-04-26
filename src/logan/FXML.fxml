@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="335.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logan.controllerlocal.LoginController">
+  <children>
+      <HBox id="horizontalPane1" prefHeight="52.0" prefWidth="335.0" AnchorPane.bottomAnchor="554.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane prefHeight="50.0" prefWidth="336.0" styleClass="headerBackground" HBox.hgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0"  prefWidth="62.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.0" minWidth="10.0" prefWidth="274.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="47.0" fitWidth="53.0" GridPane.margin="5.0"  pickOnBounds="true" preserveRatio="true">
+                       <image>
+                    <Image preserveRatio="true" smooth="true" url="@images/logan.png" />
+                  </image>
+                  </ImageView>
+                  <Label text="Logan Log Managment" GridPane.columnIndex="1">
+                     <textFill>
+                        <RadialGradient centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="#bfb1b1" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+    <AnchorPane id="anchorPane2" layoutX="19.0" layoutY="58.0" prefHeight="418.0" prefWidth="289.0" styleClass="top-segment" AnchorPane.bottomAnchor="-12.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="58.0">
+      <children>
+          
+                    <VBox id="VBox" alignment="CENTER" layoutX="22.5" layoutY="-73.5" prefHeight="464.0" prefWidth="227.0" spacing="5.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="-75.0">
+          <children>
+            <AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="223.0">
+              <children>
+                <Label id="label1" layoutX="11.0" layoutY="84.0" text="Username" />
+                <TextField id="textField1" fx:id="userId" layoutY="106.0" prefWidth="415.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" />
+                <Label id="label1" layoutX="12.0" layoutY="156.0" text="Password" />
+                <PasswordField id="passwordField1" fx:id="password" layoutY="177.0" prefWidth="415.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" />
+                <CheckBox layoutX="11.0" layoutY="230.0" mnemonicParsing="false" text="Remember Password" />
+                <CheckBox layoutX="11.0" layoutY="261.0" mnemonicParsing="false" text="Automatically Login" />
+                <Button id="button1" fx:id="login" defaultButton="true" minHeight="33.0" onAction="#processLogin" prefHeight="42.000099999997474" prefWidth="418.0" text="Login" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="3.0" />
+              </children>
+            </AnchorPane>
+          </children>
+        </VBox>
+      </children>
+    </AnchorPane>
+    <HBox id="hBox1" alignment="CENTER" prefHeight="42.0" prefWidth="418.0" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="36.5" AnchorPane.rightAnchor="45.5">
+      <children>
+        <Label id="label2" fx:id="errorMessage" />
+      </children>
+    </HBox>
+    <TilePane layoutX="150.0" layoutY="150.0" prefHeight="200.0" prefWidth="112.5" />
+  </children>
+  <stylesheets>
+    <URL value="@css/Login.css" />
+  </stylesheets>
+</AnchorPane>

@@ -1,0 +1,23 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.paneHeader{
+    -fx-font-size: 16px;
+    -fx-font-weight:bold;
+    -fx-text-fill:#575757;
+}.vboxClass{
+    
+    -fx-background-color:#ECEDEF; 
+    -fx-border-width:1.0;
+    -fx-border-style:solid;
+    -fx-border-color:#CCCCCC;
+    -fx-cursor:pointer; 
+    
+}.vboxClass:hover {
+       -fx-background-color:rgba(236,237,238, 0.5);
+
+}
