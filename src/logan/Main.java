@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import logan.model.User;
@@ -47,9 +48,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             stage = primaryStage;
+            //stage.getIcons().add(new Image(this.getClass().getResourceAsStream("C:\\Users\\Administrator\\Documents\\NetBeansProjects\\Logon\\logan.png")));
             stage.setTitle("Welcome to Logan");
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+            
             gotoLogin();
             primaryStage.show();
         } catch (Exception ex) {
@@ -76,7 +79,7 @@ public class Main extends Application {
     private void gotoScreen1() {
         try {
            
-            Screen1Controller screen1 = (Screen1Controller) replaceSceneContent("Screen1.fxml",1000,500);
+            Screen1Controller screen1 = (Screen1Controller) replaceSceneContent("Screen1.fxml",800,500);
           
             screen1.setApp(this);
             

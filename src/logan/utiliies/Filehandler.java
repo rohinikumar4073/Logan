@@ -28,9 +28,9 @@ import pl.otros.logview.parser.log4j.Log4jPatternMultilineLogParser;
  */
 public class Filehandler {
     
-    public static String defaultParsePattern="D:\\Logan\\src\\logan\\utiliies\\default.txt";
-    public static String customTypeOne="D:\\Logan\\src\\logan\\utiliies\\customtype1.txt";
-    public static String tempStorageFile="C:\\Users\\Admin\\Desktop\\test3.log";
+    public static String defaultParsePattern="C:\\Users\\Administrator\\Documents\\NetBeansProjects\\Logon\\src\\logan\\utiliies\\default.txt";
+    public static String customTypeOne="C:\\Users\\Administrator\\Documents\\NetBeansProjects\\Logon\\src\\logan\\utiliies\\customtype1.txt";
+    public static String tempStorageFile="C:\\Users\\Administrator\\Documents\\tempfiles.log";
 ;
 
     public static int counter = 0;

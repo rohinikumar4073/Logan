@@ -81,11 +81,19 @@
                         <Insets />
                      </opaqueInsets>
                      <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="8.0" />
                      </HBox.margin>
                   </Label>
-                          <TextField fx:id="filterField" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" text="listen" onAction="#listenData" />
+                          <TextField fx:id="filterField" prefWidth="-1.0" HBox.hgrow="ALWAYS" >
+                               <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                </HBox.margin>
+                          </TextField>
+                  <Button mnemonicParsing="false" text="listen" onAction="#listenData" >
+                       <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                </HBox.margin>
+                  </Button>
 
                </children>
             </HBox>
