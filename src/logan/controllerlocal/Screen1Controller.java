@@ -70,6 +70,13 @@ public class Screen1Controller implements Initializable {
     }
 
     @FXML
+    public void tailFile(ActionEvent event) throws FileNotFoundException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Logon - Open file to log");
+        File file = fileChooser.showOpenDialog(stage);
+       gotoTableView(file,"tail");
+    }
+    @FXML
     public void openFile(ActionEvent event) throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Logon - Open file to log");
@@ -95,6 +102,7 @@ public class Screen1Controller implements Initializable {
     public void setApplication(Main application) {
         this.application = application;
     }
+    
     
     private void gotoTableView(File file){
     try {
@@ -128,6 +136,10 @@ public class Screen1Controller implements Initializable {
     
     @FXML
     public void clickedStreamLog(MouseEvent event) {
+       FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Logon - Open file to log");
+        File file = fileChooser.showOpenDialog(stage);
+       gotoTableView(file);
     }
     
     @FXML
@@ -140,6 +152,10 @@ public class Screen1Controller implements Initializable {
     
     @FXML
     public void clickedReports(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Logon - Open file to log");
+        File file = fileChooser.showOpenDialog(stage);
+       gotoReportsView(file);
     }
     
     @FXML
@@ -153,4 +169,22 @@ public class Screen1Controller implements Initializable {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    private void gotoTableView(File file, String tail) {
+  try {
+            LogDataTableController loginController = (LogDataTableController) replaceSceneContent("tableViewLog.fxml",1000,500);
+            loginController.setApp(getApplication(),file,tail);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+
+    private void gotoReportsView(File file) {
+try {
+            ReportsController controller = (ReportsController) replaceSceneContent("reports.fxml",1000,500);
+            controller.setApp(getApplication(),file);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+      }
 }

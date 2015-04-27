@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.TableView;
 import pl.otros.logview.LogData;
 import pl.otros.logview.importer.InitializationException;
 import pl.otros.logview.parser.log4j.Log4jPatternMultilineLogParser;
@@ -26,23 +27,40 @@ import pl.otros.logview.parser.log4j.Log4jPatternMultilineLogParser;
  * @author Admin
  */
 public class Filehandler {
+    
+    public static String defaultParsePattern="D:\\Logan\\src\\logan\\utiliies\\default.txt";
+    public static String customTypeOne="D:\\Logan\\src\\logan\\utiliies\\customtype1.txt";
+    public static String tempStorageFile="C:\\Users\\Admin\\Desktop\\test3.log";
+;
+
+    public static int counter = 0;
+
+    private TableView tableView;
+
+    public TableView getTableView() {
+        return tableView;
+    }
+
+    public void setTableView(TableView tableView) {
+        this.tableView = tableView;
+    }
 
     public LogData[] readFile(File file) throws FileNotFoundException {
         LogData[] logdata = null;
         try {
-           
+
             Properties p = new Properties();
-            FileInputStream fileInputStream= new FileInputStream(new File("D:\\Logan\\src\\logan\\utiliies\\default.txt"));
+            FileInputStream fileInputStream = new FileInputStream(new File(customTypeOne));
             try {
                 p.load(fileInputStream);
             } catch (IOException ex) {
                 Logger.getLogger(Filehandler.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
+
             Log4jPatternMultilineLogParser logParser = new Log4jPatternMultilineLogParser();
             InputStream in = new FileInputStream(file);
             LogImporterUsingParser importerUsingParser = new LogImporterUsingParser(logParser);
-            ParsingContext context = new ParsingContext("?", "log4j/log4j_cusom_level.txt");
+            ParsingContext context = new ParsingContext();
             importerUsingParser.init(p);
             importerUsingParser.initParsingContext(context);
 

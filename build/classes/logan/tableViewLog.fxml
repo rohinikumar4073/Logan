@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -49,7 +50,7 @@
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
                     <MenuItem mnemonicParsing="false" text="Close" />
-                    <MenuItem mnemonicParsing="false" text="Home" onAction="#goToHome"/>
+                    <MenuItem mnemonicParsing="false" onAction="#goToHome" text="Home" />
 
                   </items>
                 </Menu>
@@ -70,6 +71,24 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <HBox prefHeight="34.0" prefWidth="600.0">
+               <children>
+                  <Label text="Filter Input">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                          <TextField fx:id="filterField" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" text="listen" onAction="#listenData" />
+
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
