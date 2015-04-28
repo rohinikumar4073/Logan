@@ -7,6 +7,7 @@ package logan.controllerlocal;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.logging.Level;
@@ -82,7 +83,11 @@ public class BasicController {
         fileChooser.setTitle("Logon - Open file to log");
         File file = fileChooser.showOpenDialog(stage);
         if(file!=null)
-        createTableView(file);
+        try {
+            createTableView(file);
+        } catch (IOException ex) {
+            Logger.getLogger(BasicController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -110,7 +115,7 @@ public class BasicController {
 
     }
 
-    public void createTableView(File file) throws FileNotFoundException {
+    public void createTableView(File file) throws FileNotFoundException, IOException {
         LogData[] logdataArray = new Filehandler().readFile(file);
         TableView tableView = new TableView();
         TableColumn timeStamp = new TableColumn("Time Stamp");

@@ -115,7 +115,7 @@ public class Screen1Controller extends BasicController implements Initializable 
 
     private void gotoTableView(File file, String tail) {
         try {
-            LogDataTableController loginController = (LogDataTableController) replaceSceneContent("tableViewLog.fxml", 800, 500);
+            TailTableViewController loginController = (TailTableViewController) replaceSceneContent("TailTableView.fxml", 800, 500);
             loginController.setApp(getApplication(), file, tail);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

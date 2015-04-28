@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="logan.controllerlocal.LogMonitorController">
+  <children>
+    <VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <GridPane prefHeight="52.0" prefWidth="336.0" styleClass="headerBackground">
+          <children>
+            <ImageView fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@images/logan.png" preserveRatio="true" smooth="true" />
+              </image>
+              <GridPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </GridPane.margin>
+            </ImageView>
+            <Label styleClass="headerLabel" text="LOGAN - log managment" GridPane.columnIndex="1" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="62.0" minWidth="10.0" prefWidth="62.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.0" minWidth="10.0" prefWidth="274.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+        <MenuBar prefHeight="25.0" prefWidth="474.0">
+          <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
+                <MenuItem mnemonicParsing="false" text="Close" />
+                <MenuItem mnemonicParsing="false" onAction="#goToHome" text="Home" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Delete" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Profile">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#processLogout" text="Logout" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+        <HBox prefHeight="37.0" prefWidth="600.0">
+          <children>
+            <Label text="Choose File From">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Locally" HBox.margin="$x1" />
+            <RadioButton mnemonicParsing="false" text="Remotely" HBox.margin="$x1" />
+          </children>
+        </HBox>
+        <HBox prefHeight="37.0" prefWidth="600.0">
+          <children>
+            <Label minHeight="13.999900000002526" prefHeight="13.999900000002526" text="Select File" HBox.margin="$x1" />
+            <TextField prefWidth="200.0" HBox.margin="$x1" />
+            <Button mnemonicParsing="false" text="Browse">
+              <HBox.margin>
+                <Insets bottom="5.0" left="4.0" right="5.0" top="5.0" />
+              </HBox.margin>
+            </Button>
+          </children>
+        </HBox>
+        <HBox prefHeight="37.0" prefWidth="600.0">
+          <children>
+            <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Enter Ip Address">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </Label>
+            <TextField prefWidth="200.0">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </TextField>
+          </children>
+        </HBox>
+        <HBox prefHeight="37.0" prefWidth="600.0">
+          <children>
+            <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Enter Password">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </Label>
+            <PasswordField prefWidth="200.0">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </PasswordField>
+          </children>
+        </HBox>
+        <HBox prefHeight="37.0" prefWidth="600.0">
+          <children>
+            <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Enter File Path">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </Label>
+            <TextField prefWidth="200.0">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </TextField>
+          </children>
+        </HBox>
+        <HBox prefHeight="37.0" prefWidth="600.0">
+          <children>
+            <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Choose Parsing Pattern">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </Label>
+            <MenuButton mnemonicParsing="false" text="Select">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </MenuButton>
+          </children>
+        </HBox>
+        <HBox prefHeight="37.0" prefWidth="600.0">
+          <children>
+            <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Enter New Parsing Pattern">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </Label>
+            <TextField prefWidth="200.0">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+              </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" text="Button" />
+          </children>
+        </HBox>
+        <HBox prefHeight="37.0" prefWidth="600.0">
+          <children>
+            <Button mnemonicParsing="false" text="Run File" HBox.margin="$x1" />
+            <Button mnemonicParsing="false" text="Tail File" HBox.margin="$x1" />
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@css/header.css" />
+  </stylesheets>
+</AnchorPane>

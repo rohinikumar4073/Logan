@@ -28,11 +28,14 @@ import pl.otros.logview.parser.log4j.Log4jPatternMultilineLogParser;
  */
 public class Filehandler {
     
-    public static String defaultParsePattern="C:\\Users\\Administrator\\Documents\\NetBeansProjects\\Logon\\src\\logan\\utiliies\\default.txt";
+ /*   public static String defaultParsePattern="C:\\Users\\Administrator\\Documents\\NetBeansProjects\\Logon\\src\\logan\\utiliies\\default.txt";
     public static String customTypeOne="C:\\Users\\Administrator\\Documents\\NetBeansProjects\\Logon\\src\\logan\\utiliies\\customtype1.txt";
     public static String tempStorageFile="C:\\Users\\Administrator\\Documents\\tempfiles.log";
-;
-
+;*/
+   
+    public static String defaultParsePattern= "\\default.txt";
+    public static String customTypeOne="\\customtype1.txt";
+    public static String tempStorageFile="\\tempfiles.log";
     public static int counter = 0;
 
     private TableView tableView;
@@ -45,12 +48,15 @@ public class Filehandler {
         this.tableView = tableView;
     }
 
-    public LogData[] readFile(File file) throws FileNotFoundException {
+    public LogData[] readFile(File file) throws FileNotFoundException, IOException {
         LogData[] logdata = null;
         try {
 
             Properties p = new Properties();
-            FileInputStream fileInputStream = new FileInputStream(new File(customTypeOne));
+        File f = new File("./");
+            String filePath=f.getCanonicalPath();
+            filePath= filePath.concat("\\src\\logan\\resources").concat(Filehandler.customTypeOne );
+            FileInputStream fileInputStream = new FileInputStream(new File(filePath));
             try {
                 p.load(fileInputStream);
             } catch (IOException ex) {

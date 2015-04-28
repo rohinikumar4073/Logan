@@ -7,6 +7,7 @@ package logan.controllerlocal;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -32,25 +33,29 @@ public class ReportsController  extends BasicController implements Initializable
     private TextField filterField;
 
     private void createChart(File file) throws FileNotFoundException{
-    int infocount=0;
-    int debugcount=0;
-    int errorcount=0;
-     LogData[] logdataArray = new Filehandler().readFile(file);
-        for (int i = 0; i < logdataArray.length; i++) {
-           LogData logData= logdataArray[i];
-           if(logData.getLevel().toString().equals("INFO")){
-           infocount++;
-                   
-           }else if(logData.getLevel().toString().equals("DEBUG")){
-           debugcount++;
-           }else if(logData.getLevel().toString().equals("ERROR")){
-           errorcount++;
-           }  
-       
-            
+        try {
+            int infocount=0;
+            int debugcount=0;
+            int errorcount=0;
+            LogData[] logdataArray = new Filehandler().readFile(file);
+            for (int i = 0; i < logdataArray.length; i++) {
+                LogData logData= logdataArray[i];
+                if(logData.getLevel().toString().equals("INFO")){
+                    infocount++;
+                    
+                }else if(logData.getLevel().toString().equals("DEBUG")){
+                    debugcount++;
+                }else if(logData.getLevel().toString().equals("ERROR")){
+                    errorcount++;
+                }
+                
+                
+            }
+            PieChart chart=   createChart(infocount,errorcount,debugcount);
+            getVbox().getChildren().add(chart);
+        } catch (IOException ex) {
+            Logger.getLogger(ReportsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-      PieChart chart=   createChart(infocount,errorcount,debugcount);
-         getVbox().getChildren().add(chart);
     }
     
     protected PieChart createChart(int infoCount,int errorCount,int debugCount) {
