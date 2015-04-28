@@ -56,14 +56,7 @@ public class Screen1Controller extends BasicController implements Initializable 
         gotoTableView(file, "tail");
     }
 
-    public void gotoTableView(File file) {
-        try {
-            LogDataTableController loginController = (LogDataTableController) replaceSceneContent("tableViewLog.fxml", 800, 500);
-            loginController.setApp(getApplication(), file);
-        } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
 
     @FXML
     public void clickedClipboard(MouseEvent event) {
@@ -92,14 +85,7 @@ public class Screen1Controller extends BasicController implements Initializable 
         gotoReportsView(file);
     }
 
-    @FXML
-    public void openFile(ActionEvent event) throws FileNotFoundException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Logon - Open file to log");
-        File file = fileChooser.showOpenDialog(getStage());
-        if(file!=null)
-        gotoTableView(file);
-    }
+   
 
     @FXML
     public void clickedHelp(MouseEvent event) {

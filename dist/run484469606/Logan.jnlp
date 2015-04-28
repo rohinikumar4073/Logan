@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Logan.jnlp">
+  <information>
+    <title>Logan</title>
+    <vendor>Administrator</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Logan.jar" size="12621245" download="eager" />
+    <jar href="lib/Common-libs.jar" size="261" download="eager" />
+    <jar href="lib/OtrosLogViewer-app-1.3.0.jar" size="1257612" download="eager" />
+    <jar href="lib/OtrosSingleInstance-1.3.jar" size="14373" download="eager" />
+    <jar href="lib/OtrosStarter.jar" size="14177" download="eager" />
+    <jar href="lib/OtrosSwing-1.3.0.jar" size="39646" download="eager" />
+    <jar href="lib/OtrosVfsBrowser-1.0.0.jar" size="257866" download="eager" />
+    <jar href="lib/commons-beanutils-1.9.2.jar" size="233859" download="eager" />
+    <jar href="lib/commons-beanutils-bean-collections-1.8.3.jar" size="26574" download="eager" />
+    <jar href="lib/commons-beanutils-core-1.8.3.jar" size="206711" download="eager" />
+    <jar href="lib/commons-codec-1.10.jar" size="284184" download="eager" />
+    <jar href="lib/commons-collections-3.2.1.jar" size="575389" download="eager" />
+    <jar href="lib/commons-compress-1.3.jar" size="224548" download="eager" />
+    <jar href="lib/commons-configuration-1.10.jar" size="362679" download="eager" />
+    <jar href="lib/commons-digester-2.1.jar" size="196768" download="eager" />
+    <jar href="lib/commons-httpclient-3.1.jar" size="305001" download="eager" />
+    <jar href="lib/commons-io-2.4.jar" size="185140" download="eager" />
+    <jar href="lib/commons-lang-2.6.jar" size="284220" download="eager" />
+    <jar href="lib/commons-logging-1.1.1.jar" size="60686" download="eager" />
+    <jar href="lib/commons-net-3.3.jar" size="280983" download="eager" />
+    <jar href="lib/commons-vfs2-2.0.jar" size="415578" download="eager" />
+    <jar href="lib/commons-vfs2-sandbox-2.1-SNAPSHOT.jar" size="33291" download="eager" />
+    <jar href="lib/guava-16.0.1.jar" size="2228009" download="eager" />
+    <jar href="lib/jcifs-1.3.17.jar" size="402249" download="eager" />
+    <jar href="lib/jcommander-1.29.jar" size="56533" download="eager" />
+    <jar href="lib/jsch-0.1.51.jar" size="263829" download="eager" />
+    <jar href="lib/jsyntaxpane-0.9.5-b29.jar" size="397327" download="eager" />
+    <jar href="lib/jxlayer-3.0.4.jar" size="48483" download="eager" />
+    <jar href="lib/jzlib-1.1.3.jar" size="71976" download="eager" />
+    <jar href="lib/laf-plugin-7.2.1.jar" size="16622" download="eager" />
+    <jar href="lib/laf-widget-7.2.1.jar" size="392564" download="eager" />
+    <jar href="lib/log4j-1.2.17.jar" size="489884" download="eager" />
+    <jar href="lib/looks-2.2.0.jar" size="425237" download="eager" />
+    <jar href="lib/maven-scm-api-1.4.jar" size="94421" download="eager" />
+    <jar href="lib/maven-scm-provider-svn-commons-1.4.jar" size="40066" download="eager" />
+    <jar href="lib/maven-scm-provider-svnexe-1.4.jar" size="69858" download="eager" />
+    <jar href="lib/miglayout-core-4.2.jar" size="66663" download="eager" />
+    <jar href="lib/miglayout-swing-4.2.jar" size="14580" download="eager" />
+    <jar href="lib/plexus-utils-1.5.6.jar" size="250546" download="eager" />
+    <jar href="lib/prettytime-3.1.0.Final.jar" size="91651" download="eager" />
+    <jar href="lib/regexp-1.3.jar" size="25429" download="eager" />
+    <jar href="lib/servlet-api-2.4.jar" size="97693" download="eager" />
+    <jar href="lib/slf4j-api-1.6.6.jar" size="26176" download="eager" />
+    <jar href="lib/slf4j-jdk14-1.6.6.jar" size="8845" download="eager" />
+    <jar href="lib/substance-7.2.1.jar" size="1518423" download="eager" />
+    <jar href="lib/swingx-all-1.6.5-1.jar" size="1495328" download="eager" />
+    <jar href="lib/trident-7.2.1-swing.jar" size="92353" download="eager" />
+    <jar href="lib/trident-7.2.1.jar" size="109105" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Logan" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="logan.Main"  name="Logan" />
+  <update check="always"/>
+</jnlp>

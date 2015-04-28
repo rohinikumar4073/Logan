@@ -26,12 +26,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import static org.apache.commons.collections.CollectionUtils.reverseArray;
 import org.apache.commons.io.input.Tailer;
 import org.apache.commons.io.input.TailerListener;
 import org.apache.commons.io.input.TailerListenerAdapter;
 import pl.otros.logview.LogData;
 
-public class LogDataTableController  extends BasicController implements Initializable {
+public class LogDataTableController extends BasicController implements Initializable {
 
     private File file;
 
@@ -95,15 +96,15 @@ public class LogDataTableController  extends BasicController implements Initiali
             lines++;
             if (lines >= noOfLines) {
                 bw.write(sCurrentLine);
-                                bw.write("\n");
+                bw.write("\n");
 
                 System.out.println(sCurrentLine);
             }
         }
         reader.close();
         bw.close();
-       LogData[] logDatas= new Filehandler().readFile(fileouput);
-       final ObservableList<LoggerData> data = createObservableArrayList(logDatas, FXCollections.observableArrayList());
+        LogData[] logDatas = new Filehandler().readFile(fileouput);
+        final ObservableList<LoggerData> data = createObservableArrayList(logDatas, FXCollections.observableArrayList());
         // 1. Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<LoggerData> filteredData = new FilteredList<>(data, p -> true);
 
@@ -132,7 +133,7 @@ public class LogDataTableController  extends BasicController implements Initiali
         });
 
         logDataTable.setItems(filteredData);
-                
+
     }
 
     public class ShowLinesListener extends TailerListenerAdapter {
@@ -161,7 +162,7 @@ public class LogDataTableController  extends BasicController implements Initiali
 
     }
 
-    public void setApp(Main application, File file) throws FileNotFoundException {
+    public void setApp(Main application, File file) throws FileNotFoundException, IOException {
         setApplication(application);
         setStage(application.getStage());
         createTableView(file);
@@ -177,8 +178,6 @@ public class LogDataTableController  extends BasicController implements Initiali
         setApplication(application);
         setStage(application.getStage());
     }
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -227,6 +226,65 @@ public class LogDataTableController  extends BasicController implements Initiali
         this.logDataTable = tableView;
         this.file = file;
 
+    }
+
+    public void createTableView(File file) throws FileNotFoundException, IOException {
+        LogData[] logdataArray = new Filehandler().readFile(file);
+        reverseArray(logdataArray);
+        TableView tableView = new TableView();
+        TableColumn timeStamp = new TableColumn("Time Stamp");
+        TableColumn priority = new TableColumn("Priority");
+        TableColumn thread = new TableColumn("Thread");
+        TableColumn message = new TableColumn("Message");
+        TableColumn className = new TableColumn("ClassName");
+        TableColumn method = new TableColumn("Method");
+        TableColumn lineNumber = new TableColumn("Line Number");
+        timeStamp.setCellValueFactory(
+                new PropertyValueFactory<LoggerData, String>("date"));
+        priority.setCellValueFactory(
+                new PropertyValueFactory<LoggerData, String>("priority"));
+        thread.setCellValueFactory(
+                new PropertyValueFactory<LoggerData, String>("threadId"));
+        message.setCellValueFactory(
+                new PropertyValueFactory<LoggerData, String>("message"));
+        className.setCellValueFactory(
+                new PropertyValueFactory<LoggerData, String>("className"));
+        method.setCellValueFactory(
+                new PropertyValueFactory<LoggerData, String>("method"));
+        lineNumber.setCellValueFactory(
+                new PropertyValueFactory<LoggerData, String>("lineNumber"));
+        getVbox().getChildren().add(tableView);
+        final ObservableList<LoggerData> data = createObservableArrayList(logdataArray, FXCollections.observableArrayList());
+
+        tableView.getColumns().addAll(timeStamp, priority, thread, message, className, method, lineNumber);
+        FilteredList<LoggerData> filteredData = new FilteredList<>(data, p -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(logData -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (logData.getPriority().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches first name.
+                } else if (logData.getMessage().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches last name.
+                } else if (logData.getDate().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches last name.
+                } else if (logData.getClassName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches last name.
+                }
+                return false; // Does not match.
+            });
+        });
+
+        tableView.setItems(filteredData);
+        this.logDataTable=tableView;
     }
 
 }

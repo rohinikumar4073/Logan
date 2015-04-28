@@ -83,11 +83,9 @@ public class BasicController {
         fileChooser.setTitle("Logon - Open file to log");
         File file = fileChooser.showOpenDialog(stage);
         if(file!=null)
-        try {
-            createTableView(file);
-        } catch (IOException ex) {
-            Logger.getLogger(BasicController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
+            gotoTableView(file);
+       
     }
 
     @FXML
@@ -204,5 +202,13 @@ public class BasicController {
         stage.sizeToScene();
         return (Initializable) loader.getController();
     }
+
+    public void gotoTableView(File file) {
+        try {
+            LogDataTableController loginController = (LogDataTableController) replaceSceneContent("tableViewLog.fxml", 800, 500);
+            loginController.setApp(getApplication(), file);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }    }
 
 }

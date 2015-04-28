@@ -34,8 +34,9 @@ import org.apache.commons.io.input.TailerListener;
 import org.apache.commons.io.input.TailerListenerAdapter;
 import pl.otros.logview.LogData;
 
-public class  TailTableViewController extends BasicController implements Initializable {
+public class TailTableViewController extends BasicController implements Initializable {
 
+    private ScheduledExecutorService exec;
     private File file;
 
     @FXML
@@ -66,10 +67,47 @@ public class  TailTableViewController extends BasicController implements Initial
     private Label methodName;
 
     public static int noOfLines;
+    boolean isStart = false;
 
     @FXML
-    public void listenData(ActionEvent event) throws IOException {
-        listenData();
+    public void listenData(ActionEvent event) throws IOException, InterruptedException {
+        
+        if (!isStart) {
+            isStart=true;
+            exec.scheduleAtFixedRate(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        System.out.println("Log");
+                        if (file != null) {
+                            listenData();
+                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(TailTableViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+
+            }, 0, 5, TimeUnit.SECONDS);
+        }else if (!isPause) {
+             isPause=true;
+            exec.wait();
+        } else {
+            isPause=false;
+            exec.notify();
+        }
+    }
+    boolean isPause = false;
+
+    @FXML
+    public void pauseData(ActionEvent event) throws IOException, InterruptedException {
+        
+    }
+
+    @FXML
+    public void stopData(ActionEvent event) throws IOException, InterruptedException {
+        exec.shutdown();
+        isStart=false;
     }
 
     public class ShowLinesListener extends TailerListenerAdapter {
@@ -119,11 +157,11 @@ public class  TailTableViewController extends BasicController implements Initial
         setStage(application.getStage());
     }
 
- private void listenData() throws IOException {
+    private void listenData() throws IOException {
         File f = new File("./");
 
-        String filePath=f.getCanonicalPath();
-      filePath= filePath.concat("\\src\\logan\\resources").concat(Filehandler.tempStorageFile);
+        String filePath = f.getCanonicalPath();
+        filePath = filePath.concat("\\src\\logan\\resources").concat(Filehandler.tempStorageFile);
         System.out.println(filePath);
         File fileouput = new File(filePath);
 
@@ -131,34 +169,34 @@ public class  TailTableViewController extends BasicController implements Initial
         if (!fileouput.exists()) {
             fileouput.createNewFile();
         }
-                 System.out.println("chekcpoint 0");
+        System.out.println("chekcpoint 0");
 
         FileWriter fw = new FileWriter(fileouput.getAbsoluteFile());
         BufferedWriter bw = new BufferedWriter(fw);
-                 System.out.println(file);
-                 System.out.println(file.getAbsolutePath());
+        System.out.println(file);
+        System.out.println(file.getAbsolutePath());
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
         int lines = 0;
         String sCurrentLine;
-                 System.out.println("chekcpoint 1");
+        System.out.println("chekcpoint 1");
 
         while ((sCurrentLine = reader.readLine()) != null) {
             lines++;
             if (lines >= noOfLines) {
                 bw.write(sCurrentLine);
-                                bw.write("\n");
+                bw.write("\n");
 
                 System.out.println(sCurrentLine);
             }
         }
         reader.close();
         bw.close();
-                 System.out.println("chekcpoint 2");
+        System.out.println("chekcpoint 2");
 
-        LogData[] logDatas= new Filehandler().readFile(fileouput);
-       final ObservableList<LoggerData> data = createObservableArrayList(logDatas, FXCollections.observableArrayList());
-       System.out.println("chekcpoint 4");
+        LogData[] logDatas = new Filehandler().readFile(fileouput);
+        final ObservableList<LoggerData> data = createObservableArrayList(logDatas, FXCollections.observableArrayList());
+        System.out.println("chekcpoint 4");
         // 1. Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<LoggerData> filteredData = new FilteredList<>(data, p -> true);
 
@@ -187,28 +225,14 @@ public class  TailTableViewController extends BasicController implements Initial
         });
 
         logDataTable.setItems(filteredData);
-                 System.out.println("chekcpoint last");
-     
-            }
+        System.out.println("chekcpoint last");
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
-exec.scheduleAtFixedRate(new Runnable() {
-  @Override
-  public void run() {
-      try {
-          System.out.println("Log");
-          if(file!=null)
-          listenData();
-      } catch (IOException ex) {
-          Logger.getLogger(TailTableViewController.class.getName()).log(Level.SEVERE, null, ex);
-      }
-     
-  }
+        exec = Executors.newSingleThreadScheduledExecutor();
 
-           
-        }, 0, 5, TimeUnit.SECONDS);
     }
 
     private void createTableView(File file, String str) throws FileNotFoundException {

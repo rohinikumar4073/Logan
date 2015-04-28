@@ -7,11 +7,8 @@
     <offline-allowed/>
   </information>
   <resources>
-    <jfx:javafx-runtime version="8.0+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
-  </resources>
-  <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Logan.jar" size="12621288" download="eager" />
+    <jar href="Logan.jar" size="12621598" download="eager" />
     <jar href="lib/Common-libs.jar" size="261" download="eager" />
     <jar href="lib/OtrosLogViewer-app-1.3.0.jar" size="1257612" download="eager" />
     <jar href="lib/OtrosSingleInstance-1.3.jar" size="14373" download="eager" />

@@ -25,23 +25,7 @@ import logan.Main;
 public class HelpFXMLController  extends BasicController implements Initializable {
     
    
-    @FXML
-    public void openFile(ActionEvent event) throws FileNotFoundException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Logon - Open file to log");
-        File file = fileChooser.showOpenDialog(getStage());
-        if(file!=null)
-        gotoTableView(file);
-    }
-
-    private void gotoTableView(File file) {
-        try {
-            LogDataTableController loginController = (LogDataTableController) replaceSceneContent("tableViewLog.fxml", 800, 500);
-            loginController.setApp(getApplication(), file);
-        } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
     /**
      * Initializes the controller class.
      */

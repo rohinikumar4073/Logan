@@ -73,7 +73,7 @@
             </MenuBar>
             <HBox prefHeight="34.0" prefWidth="600.0">
                <children>
-                  <Label text="Filter Input">
+                  <Label text="Filter Input" >
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -89,12 +89,21 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </HBox.margin>
                           </TextField>
-                  <Button mnemonicParsing="false" onAction="#listenData" text="Listen">
+                  <Button mnemonicParsing="false" onAction="#listenData" text="Start">
                        <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </HBox.margin>
                   </Button>
-
+                   <Button mnemonicParsing="false" onAction="#pauseData" text="PauseData">
+                       <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                </HBox.margin>
+                  </Button>
+ <Button mnemonicParsing="false" onAction="#stopData" text="Stop">
+                       <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </children>
