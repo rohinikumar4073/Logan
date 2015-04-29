@@ -55,7 +55,7 @@ public class Filehandler {
             Properties p = new Properties();
         File f = new File("./");
             String filePath=f.getCanonicalPath();
-            filePath= filePath.concat("\\src\\logan\\resources").concat(Filehandler.customTypeOne );
+            filePath= filePath.concat("\\src\\logan\\resources\\patterns").concat(Filehandler.customTypeOne );
             FileInputStream fileInputStream = new FileInputStream(new File(filePath));
             try {
                 p.load(fileInputStream);

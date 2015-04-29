@@ -104,7 +104,7 @@ Button btn2;
                         System.out.println("Is Pause");
 
             if(btn1!=null){
-            btn1.setText("Start");
+            btn1.setText("Start Tailing");
             }f.cancel(true);
              
                              

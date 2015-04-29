@@ -60,6 +60,12 @@ public class Screen1Controller extends BasicController implements Initializable 
 
     @FXML
     public void clickedClipboard(MouseEvent event) {
+        try {
+            ClipboardController clipboardController = (ClipboardController) replaceSceneContent("clipboard.fxml", 800, 500);
+            clipboardController.setApplication(getApplication());
+        } catch (Exception ex) {
+            Logger.getLogger(Screen1Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -75,6 +81,11 @@ public class Screen1Controller extends BasicController implements Initializable 
 
     @FXML
     public void clickedAlerts(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Logon - Open file to log");
+        File file = fileChooser.showOpenDialog(getStage());
+        if(file!=null)
+        goToAlertView(file, "tail");
     }
 
     @FXML
@@ -82,6 +93,7 @@ public class Screen1Controller extends BasicController implements Initializable 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Logon - Open file to log");
         File file = fileChooser.showOpenDialog(getStage());
+        if(file!=null)
         gotoReportsView(file);
     }
 
@@ -106,8 +118,17 @@ public class Screen1Controller extends BasicController implements Initializable 
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
-
+  private void goToAlertView(File file, String tail) {
+        try {
+            AlertsPageController aletsContorller = (AlertsPageController) replaceSceneContent("alertsPage.fxml", 800, 500);
+            aletsContorller.setApp(getApplication(), file, tail);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     private void gotoReportsView(File file) {
         try {
             ReportsController controller = (ReportsController) replaceSceneContent("reports.fxml", 800, 500);

@@ -75,6 +75,7 @@ public class BasicController {
 
     public void setApplication(Main application) {
         this.application = application;
+        this.stage=application.getStage();
     }
 
     @FXML

@@ -1,0 +1,5 @@
+type=log4j
+pattern=TIMESTAMP LEVEL CLASS:LINE - MESSAGE
+dateFormat=yyyy-MM-dd HH:mm:ss
+name=Sample
+charset=windows-1252

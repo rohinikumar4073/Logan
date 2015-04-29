@@ -3,14 +3,13 @@
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
-
-
+<?import javafx.scene.text.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="logan.controllerlocal.LogMonitorController">
   <children>
@@ -62,18 +61,19 @@
             </Menu>
           </menus>
         </MenuBar>
-        <HBox prefHeight="37.0" prefWidth="600.0">
+        <HBox fx:id="radioGroupBox" prefHeight="37.0" prefWidth="600.0">
           <children>
             <Label text="Choose File From">
               <HBox.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
               </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Locally" HBox.margin="$x1" />
-            <RadioButton mnemonicParsing="false" text="Remotely" HBox.margin="$x1" />
+            <RadioButton fx:id="rb1" mnemonicParsing="false" text="Locally" HBox.margin="$x1" />
+            <RadioButton fx:id="rb2" mnemonicParsing="false" text="Remotely" HBox.margin="$x1" />
+            
           </children>
         </HBox>
-        <HBox prefHeight="37.0" prefWidth="600.0" styleClass="localFileLocation">
+        <HBox fx:id="localAdd" prefHeight="37.0" prefWidth="600.0" styleClass="localFileLocation">
           <children>
             <Label minHeight="13.999900000002526" prefHeight="13.999900000002526" text="Select File" HBox.margin="$x1" />
             <TextField prefWidth="200.0" HBox.margin="$x1" />
@@ -84,7 +84,21 @@
             </Button>
           </children>
         </HBox>
-        <HBox prefHeight="37.0" prefWidth="600.0"  styleClass="ipaddress">
+        <HBox fx:id="parsingPatternsOld" prefHeight="37.0" prefWidth="600.0" styleClass="parsingPatternsOld">
+          <children>
+            <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Choose Parsing Pattern">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x10" />
+              </HBox.margin>
+            </Label>
+            <ComboBox  fx:id="menuButton">
+              <items>
+                
+              </items>
+            </ComboBox>
+          </children>
+        </HBox>
+        <HBox fx:id="ipAddress" prefHeight="37.0" prefWidth="600.0" styleClass="ipaddress">
           <children>
             <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Enter Ip Address">
               <HBox.margin>
@@ -98,7 +112,7 @@
             </TextField>
           </children>
         </HBox>
-        <HBox prefHeight="37.0" prefWidth="600.0"  styleClass="password">
+        <HBox fx:id="password" prefHeight="37.0" prefWidth="600.0" styleClass="password">
           <children>
             <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Enter Password">
               <HBox.margin>
@@ -112,7 +126,7 @@
             </PasswordField>
           </children>
         </HBox>
-        <HBox prefHeight="37.0" prefWidth="600.0" styleClass="remoteFileLocation">
+        <HBox fx:id="remoteFileLocation" prefHeight="37.0" prefWidth="600.0" styleClass="remoteFileLocation">
           <children>
             <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Enter File Path">
               <HBox.margin>
@@ -126,43 +140,11 @@
             </TextField>
           </children>
         </HBox>
-        <HBox prefHeight="37.0" prefWidth="600.0" styleClass="parsingPatternsOld" >
+        <HBox fx:id="buttonBox" prefHeight="37.0" prefWidth="600.0" styleClass="buttonBox">
           <children>
-            <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Choose Parsing Pattern">
-              <HBox.margin>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x10" />
-              </HBox.margin>
-            </Label>
-            <MenuButton mnemonicParsing="false" text="Select">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-              <HBox.margin>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x11" />
-              </HBox.margin>
-            </MenuButton>
-          </children>
-        </HBox>
-        <HBox prefHeight="37.0" prefWidth="600.0" styleClass="parsingPatternsNew">
-          <children>
-            <Label minHeight="13.999900000002526" prefHeight="25.0" prefWidth="143.0" text="Enter New Parsing Pattern">
-              <HBox.margin>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x12" />
-              </HBox.margin>
-            </Label>
-            <TextField prefWidth="200.0">
-              <HBox.margin>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x13" />
-              </HBox.margin>
-            </TextField>
-            <Button mnemonicParsing="false" text="Button" />
-          </children>
-        </HBox>
-        <HBox prefHeight="37.0" prefWidth="600.0" styleClass="buttonBox">
-          <children>
-            <Button mnemonicParsing="false" text="Run File" HBox.margin="$x14" />
-            <Button mnemonicParsing="false" text="Tail File" HBox.margin="$x15" />
+            <Button mnemonicParsing="false" text="Run File" />
+            <Button mnemonicParsing="false" text="Tail File" />
+            <Button mnemonicParsing="false" text="Report File" />
           </children>
         </HBox>
       </children>
@@ -170,7 +152,6 @@
   </children>
   <stylesheets>
     <URL value="@css/header.css" />
-        <URL value="@css/logmonitor.css" />
-
+    <URL value="@css/logmonitor.css" />
   </stylesheets>
 </AnchorPane>
