@@ -89,17 +89,13 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </HBox.margin>
                           </TextField>
-                  <Button mnemonicParsing="false" onAction="#listenData" text="Start">
+                  <Button mnemonicParsing="false" onAction="#listenData" fx:id="btn1" text="Start">
                        <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </HBox.margin>
                   </Button>
-                   <Button mnemonicParsing="false" onAction="#pauseData" text="PauseData">
-                       <HBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                </HBox.margin>
-                  </Button>
- <Button mnemonicParsing="false" onAction="#stopData" text="Stop">
+                   
+ <Button mnemonicParsing="false" onAction="#clearData" text="Clear" fx:id="btn2">
                        <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </HBox.margin>

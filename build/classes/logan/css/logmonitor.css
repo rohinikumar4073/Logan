@@ -5,3 +5,8 @@
 .mainFxmlClass {
 
 }
+.parsingPatternsOld,.parsingPatternsNew,.buttonBox,.localFileLocation,.remoteFileLocation,.ipaddress,.password{
+    
+    visibility: hidden;
+    
+}

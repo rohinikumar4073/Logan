@@ -3,6 +3,7 @@
  */
 package logan;
 
+import java.io.File;
 import logan.controllerlocal.Screen1Controller;
 import logan.controllerlocal.LoginController;
 import java.io.InputStream;
@@ -48,7 +49,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             stage = primaryStage;
-            //stage.getIcons().add(new Image(this.getClass().getResourceAsStream("C:\\Users\\Administrator\\Documents\\NetBeansProjects\\Logon\\logan.png")));
+             File f = new File("./");
+            String filePath=f.getCanonicalPath();
+            filePath= filePath.concat("\\src\\logan\\images\\logan.png");
+            System.out.println(filePath);
+             stage.getIcons().add(new Image("file:"+filePath));
             stage.setTitle("Welcome to Logan");
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);

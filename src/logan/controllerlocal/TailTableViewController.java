@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -24,6 +25,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -68,13 +70,21 @@ public class TailTableViewController extends BasicController implements Initiali
 
     public static int noOfLines;
     boolean isStart = false;
+@FXML
+Button btn1;
+@FXML
+Button btn2;
+        Future f=null;
 
     @FXML
     public void listenData(ActionEvent event) throws IOException, InterruptedException {
-        
         if (!isStart) {
+            System.out.println("Is start");
+            if(btn1!=null){
+            btn1.setText("Stop");
+            }
             isStart=true;
-            exec.scheduleAtFixedRate(new Runnable() {
+            f= exec.scheduleAtFixedRate(new Runnable() {
                 @Override
                 public void run() {
                     try {
@@ -87,14 +97,19 @@ public class TailTableViewController extends BasicController implements Initiali
                     }
 
                 }
+               
 
             }, 0, 5, TimeUnit.SECONDS);
-        }else if (!isPause) {
-             isPause=true;
-            exec.wait();
-        } else {
-            isPause=false;
-            exec.notify();
+        }else  { isStart=false;
+                        System.out.println("Is Pause");
+
+            if(btn1!=null){
+            btn1.setText("Start");
+            }f.cancel(true);
+             
+                             
+
+             
         }
     }
     boolean isPause = false;
@@ -105,9 +120,10 @@ public class TailTableViewController extends BasicController implements Initiali
     }
 
     @FXML
-    public void stopData(ActionEvent event) throws IOException, InterruptedException {
-        exec.shutdown();
-        isStart=false;
+    public void clearData(ActionEvent event) throws IOException, InterruptedException {
+        getVbox().getChildren().remove(logDataTable);
+       
+        createTableView(file,"");
     }
 
     public class ShowLinesListener extends TailerListenerAdapter {
