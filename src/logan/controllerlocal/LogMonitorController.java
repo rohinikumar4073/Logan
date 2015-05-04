@@ -20,17 +20,20 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import logan.Main;
-import logan.model.CustomePropeties;
+import logan.model.Alerts;
 import logan.utiliies.Filehandler;
 
 /**
@@ -62,7 +65,17 @@ public class LogMonitorController extends BasicController implements Initializab
     HBox buttonBox;
     @FXML
     ComboBox menuButton;
-
+    @FXML
+    Button browseFiles;
+    @FXML
+    Button runFile;
+    @FXML
+    Button tailFile;
+     @FXML
+    Button reportFile;
+     @FXML
+     TextField localFileLocation;
+     private File file;
     /**
      * Initializes the controller class.
      */
@@ -71,6 +84,7 @@ public class LogMonitorController extends BasicController implements Initializab
         // TODO
         createTable();
         loadMenu();
+        loadButtons();
     }
 
     void setApp(Main application) {
@@ -185,6 +199,64 @@ public class LogMonitorController extends BasicController implements Initializab
         return "";
     }
 
+    private void loadButtons() {
+        browseFiles.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                
+         FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Logon - Open file to log");
+         file = fileChooser.showOpenDialog(getStage());
+        if(file!=null){
+         try {
+             localFileLocation.setText(file.getCanonicalPath());
+         } catch (IOException ex) {
+             Logger.getLogger(LogMonitorController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        }
+            } });  
+ runFile.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+               String pattern=menuButton.getValue().toString();
+                Filehandler.selectedFile="//"+pattern;
+                gotoTableView(file);
+ 
+
+            } });  
+  tailFile.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+              String pattern=menuButton.getValue().toString();
+                String fileLocation =localFileLocation.getText();
+                 Filehandler.selectedFile="//"+pattern;
+                 gotoTableView(file, "tail");
+
+            } });  
+   reportFile.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                 String pattern=menuButton.getValue().toString();
+                String fileLocation =localFileLocation.getText();
+                     gotoReportsView(file);
+
+            } });  
+
     
 
-}
+}  private void gotoTableView(File file, String tail) {
+        try {
+            TailTableViewController loginController = (TailTableViewController) replaceSceneContent("TailTableView.fxml", 800, 500);
+            loginController.setApp(getApplication(), file, tail);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }private void gotoReportsView(File file) {
+        try {
+            ReportsController controller = (ReportsController) replaceSceneContent("reports.fxml", 800, 500);
+            controller.setApp(getApplication(), file);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }}

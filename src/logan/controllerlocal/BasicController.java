@@ -94,14 +94,25 @@ public class BasicController {
 
         Screen1Controller screen1 = null;
         try {
-            screen1 = (Screen1Controller) replaceSceneContent("Screen1.fxml", 800, 500);
+            screen1 = (Screen1Controller) replaceSceneContent("Screen1.fxml", 800, 450);
         } catch (Exception ex) {
             Logger.getLogger(HelpFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         screen1.setApp(getApplication());
     }
+ @FXML
+    public void goToHelp(ActionEvent event) {
 
+        HelpFXMLController screen1 = null;
+        try {
+            screen1 = (HelpFXMLController) replaceSceneContent("helpFXML.fxml", 800, 450);
+        } catch (Exception ex) {
+            Logger.getLogger(HelpFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        screen1.setApp(getApplication());
+    }
     @FXML
     public void processLogout(ActionEvent event) {
         if (getApplication() == null) {

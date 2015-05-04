@@ -44,14 +44,10 @@
                 <MenuItem mnemonicParsing="false" onAction="#goToHome" text="Home" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Delete" />
-              </items>
-            </Menu>
+           
             <Menu mnemonicParsing="false" text="Help">
               <items>
-                <MenuItem mnemonicParsing="false" text="About" />
+                <MenuItem mnemonicParsing="false" text="About"  onAction="#goToHelp"  />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Profile">
@@ -76,8 +72,8 @@
         <HBox fx:id="localAdd" prefHeight="37.0" prefWidth="600.0" styleClass="localFileLocation">
           <children>
             <Label minHeight="13.999900000002526" prefHeight="13.999900000002526" text="Select File" HBox.margin="$x1" />
-            <TextField prefWidth="200.0" HBox.margin="$x1" />
-            <Button mnemonicParsing="false" text="Browse">
+            <TextField fx:id="localFileLocation" prefWidth="200.0" HBox.margin="$x1" />
+            <Button mnemonicParsing="false" text="Browse" fx:id="browseFiles">
               <HBox.margin>
                 <Insets bottom="5.0" left="4.0" right="5.0" top="5.0" />
               </HBox.margin>
@@ -142,9 +138,9 @@
         </HBox>
         <HBox fx:id="buttonBox" prefHeight="37.0" prefWidth="600.0" styleClass="buttonBox">
           <children>
-            <Button mnemonicParsing="false" text="Run File" />
-            <Button mnemonicParsing="false" text="Tail File" />
-            <Button mnemonicParsing="false" text="Report File" />
+            <Button mnemonicParsing="false" text="Run File" fx:id="runFile" />
+            <Button mnemonicParsing="false" text="Tail File" fx:id="tailFile" />
+            <Button mnemonicParsing="false" text="Report File"  fx:id="reportFile"/>
           </children>
         </HBox>
       </children>

@@ -43,12 +43,8 @@
                 <MenuItem mnemonicParsing="false" onAction="#goToHome" text="Home" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Delete" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
+            
+            <Menu mnemonicParsing="false" text="Help"  onAction="#goToHelp" >
               <items>
                 <MenuItem mnemonicParsing="false" text="About" />
               </items>

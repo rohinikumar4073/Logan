@@ -37,6 +37,7 @@ public class Filehandler {
     public static String customTypeOne="\\customtype1.txt";
     public static String tempStorageFile="\\tempfiles.log";
     public static int counter = 0;
+    public static String selectedFile="\\customtype1.txt";
 
     private TableView tableView;
 
@@ -55,7 +56,7 @@ public class Filehandler {
             Properties p = new Properties();
         File f = new File("./");
             String filePath=f.getCanonicalPath();
-            filePath= filePath.concat("\\src\\logan\\resources\\patterns").concat(Filehandler.customTypeOne );
+            filePath= filePath.concat("\\src\\logan\\resources\\patterns").concat(Filehandler.selectedFile );
             FileInputStream fileInputStream = new FileInputStream(new File(filePath));
             try {
                 p.load(fileInputStream);

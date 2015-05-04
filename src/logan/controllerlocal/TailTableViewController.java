@@ -99,7 +99,7 @@ Button btn2;
                 }
                
 
-            }, 0, 5, TimeUnit.SECONDS);
+            }, 0, 2, TimeUnit.SECONDS);
         }else  { isStart=false;
                         System.out.println("Is Pause");
 
